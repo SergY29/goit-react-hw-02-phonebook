@@ -1,28 +1,48 @@
+import { nanoid } from 'nanoid';
 import { Component } from 'react';
 import { Container } from './App.styled';
-import { ContactForm } from './ContactForm/ContactForm';
+import { ContactForm } from './ContactForm';
+import { ContactList } from './ContactList';
 
 export class App extends Component {
   state = {
     contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+      { id: 'id-1', name: 'Rosie Simpson' },
+      { id: 'id-2', name: 'Hermione Kline' },
+      { id: 'id-3', name: 'Eden Clements' },
+      { id: 'id-4', name: 'Annie Copeland' },
     ],
-    filter: '',
+    // filter: '',
     name: '',
-    number: '',
+    // number: '',
+  };
+
+  loginInputId = nanoid();
+
+  handleSubmit = e => {
+    e.preventDefault();
+    this.setState({ name: '' });
+  };
+
+  handleChange = e => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
   };
 
   render() {
+    const { name, contacts } = this.state;
     return (
       <Container>
         <h1>Phonebook</h1>
-        <ContactForm />
+        <ContactForm
+          loginInputId={this.loginInputId}
+          onChange={this.handleChange}
+          onSubmit={this.handleSubmit}
+          name={name}
+        />
         <h2>Contacts</h2>
-        {/* <Filter ... />
-        <ContactList ... /> */}
+        {/* <Filter ... /> */}
+        <ContactList contacts={contacts} />
       </Container>
     );
   }
