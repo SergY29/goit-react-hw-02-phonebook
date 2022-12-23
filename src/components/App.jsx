@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import { Container } from './App.styled';
+import { ContactForm } from './ContactForm/ContactForm';
 
 export class App extends Component {
   state = {
@@ -15,13 +17,13 @@ export class App extends Component {
 
   render() {
     return (
-      <div>
+      <Container>
         <h1>Phonebook</h1>
-        {/* <ContactForm ... /> */}
+        <ContactForm />
         <h2>Contacts</h2>
         {/* <Filter ... />
         <ContactList ... /> */}
-      </div>
+      </Container>
     );
   }
 }
