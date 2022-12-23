@@ -1,4 +1,3 @@
-import { nanoid } from 'nanoid';
 import { Component } from 'react';
 import { Container } from './App.styled';
 import { ContactForm } from './ContactForm';
@@ -17,29 +16,24 @@ export class App extends Component {
     // number: '',
   };
 
-  loginInputId = nanoid();
+  // loginInputId = nanoid();
 
-  handleSubmit = e => {
-    e.preventDefault();
-    this.setState({ name: '' });
-  };
+  // handleSubmit = e => {
+  //   e.preventDefault();
+  //   this.setState({ name: '' });
+  // };
 
-  handleChange = e => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
-  };
+  // handleChange = e => {
+  //   const { name, value } = e.target;
+  //   this.setState({ [name]: value });
+  // };
 
   render() {
-    const { name, contacts } = this.state;
+    const { contacts } = this.state;
     return (
       <Container>
         <h1>Phonebook</h1>
-        <ContactForm
-          loginInputId={this.loginInputId}
-          onChange={this.handleChange}
-          onSubmit={this.handleSubmit}
-          name={name}
-        />
+        <ContactForm />
         <h2>Contacts</h2>
         {/* <Filter ... /> */}
         <ContactList contacts={contacts} />
