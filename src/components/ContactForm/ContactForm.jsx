@@ -13,7 +13,7 @@ export class ContactForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state);
+    this.props.onSubmitCont(this.state.name);
     this.setState({ name: '' });
   };
 

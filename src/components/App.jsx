@@ -19,12 +19,16 @@ export class App extends Component {
 
   // loginInputId = nanoid();
 
+  addContact = contact => {
+    console.log(contact);
+  };
+
   render() {
     const { contacts } = this.state;
     return (
       <Container>
         <h1>Phonebook</h1>
-        <ContactForm />
+        <ContactForm onSubmitCont={this.addContact} />
         <h2>Contacts</h2>
         {/* <Filter ... /> */}
         <ContactList contacts={contacts} />
