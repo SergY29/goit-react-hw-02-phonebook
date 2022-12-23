@@ -19,16 +19,6 @@ export class App extends Component {
 
   // loginInputId = nanoid();
 
-  // handleSubmit = e => {
-  //   e.preventDefault();
-  //   this.setState({ name: '' });
-  // };
-
-  // handleChange = e => {
-  //   const { name, value } = e.target;
-  //   this.setState({ [name]: value });
-  // };
-
   render() {
     const { contacts } = this.state;
     return (
