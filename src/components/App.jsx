@@ -1,3 +1,4 @@
+// import { nanoid } from 'nanoid';
 import { Component } from 'react';
 import { Container } from './App.styled';
 import { ContactForm } from './ContactForm';
