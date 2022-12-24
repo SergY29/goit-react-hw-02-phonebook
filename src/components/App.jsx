@@ -18,6 +18,7 @@ export class App extends Component {
 
   addContact = newPhoneNumber => {
     const { name, number } = newPhoneNumber;
+    const { contacts } = this.state;
     console.log(newPhoneNumber);
 
     const newContact = {
@@ -26,9 +27,19 @@ export class App extends Component {
       number,
     };
 
-    this.setState(prevState => ({
-      contacts: [newContact, ...prevState.contacts],
-    }));
+    const notUniqueName = contacts.find(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
+    );
+
+    if (notUniqueName) {
+      console.log('такое имя уже есть');
+      alert(`${name} is alredy in contacts!`);
+      return;
+    } else {
+      this.setState(prevState => ({
+        contacts: [newContact, ...prevState.contacts],
+      }));
+    }
   };
 
   handleFilter = e => {
