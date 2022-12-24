@@ -47,6 +47,13 @@ export class App extends Component {
     this.setState({ [name]: value });
   };
 
+  handleDelete = id => {
+    this.setState(prevState => {
+      const newList = prevState.contacts.filter(contact => contact.id !== id);
+      return { contacts: newList };
+    });
+  };
+
   render() {
     const { contacts, filter } = this.state;
     const lowerCaseFilter = filter.toLowerCase();
@@ -60,7 +67,7 @@ export class App extends Component {
         <ContactForm onSubmitCont={this.addContact} />
         <h2>Contacts</h2>
         <Filter filter={filter} onFilter={this.handleFilter} />
-        <ContactList contacts={filteredNames} />
+        <ContactList contacts={filteredNames} onDelete={this.handleDelete} />
       </Container>
     );
   }
